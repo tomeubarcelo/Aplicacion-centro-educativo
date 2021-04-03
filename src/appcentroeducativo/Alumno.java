@@ -19,7 +19,9 @@ public class Alumno {
     private String codiTutorAlu;
     
     //CONSTRUCTOR POR DEFECTO
-
+    public Alumno(){
+    }
+    
     public Alumno(String codi, String nombre, String codiTutorAlu){
         this.codi = codi;
         this.nombre = nombre;

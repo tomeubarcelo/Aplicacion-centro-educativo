@@ -69,8 +69,24 @@ public class AppCentroEducativo {
                         }
                         break;
                     case 3:
-                        System.out.println("\n3a ejecucion");
+                        System.out.println("3a ejecucion");
+                        //String codiInserted = "";
+                        
+                        System.out.print("Inserte codigo tutor: ");
+                        Scanner sc = new Scanner (System.in);
+                        String codiInserted = sc.next();
+                        try {
+                            rs = stmt.executeQuery("SELECT * FROM alumno WHERE codiTutorAlumne ="+codiInserted);
+                            while (rs.next()) {                
+                                alumno = new Alumno(rs.getString("codiAlumne"),rs.getString("nomAlumne") ,rs.getString("codiTutorAlumne"));
+                                System.out.println(alumno.getCodi() + " "+ alumno.getNombre() + " "+alumno.getCodiTutorAlu());
+                            }    
+                        } catch (SQLException e) {
+                            System.err.println(e);
+                        }
+                        
                         break;
+
                     case 4:
                         System.out.println("\n4a ejecucion");
                         break;
