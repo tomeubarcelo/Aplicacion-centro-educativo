@@ -26,7 +26,7 @@ public class AppCentroEducativo {
         Connection con;
         Statement stmt;
         ResultSet rs;
-        
+        Alumno alumno;
         //variables para conexion bbdd
         String connexioUrl,user,password;
         try {
@@ -39,12 +39,12 @@ public class AppCentroEducativo {
             //crear sentencia
             stmt = con.createStatement();
             //execucio
-            rs = stmt.executeQuery("SELECT * FROM alumno");
+            rs = stmt.executeQuery("SELECT codiAlumne, nomAlumne, codiTutorAlumne FROM alumno");
             while (rs.next()) {                
-                //client = new cliente(rs.getInt("idCliente"), rs.getString("NOMBRE"));
-                //System.out.println(client.getIdCliente() + " "+ client.getNombre());
+                alumno = new Alumno(rs.getString("codiAlumne"),rs.getString("nomAlumne") ,rs.getString("codiTutorAlumne"));
+                System.out.println(alumno.getCodi() + " "+ alumno.getNombre() + " "+alumno.getCodiTutorAlu());
             }
-            //tancat les connexions
+            //tancam les connexions
             rs.close();
             stmt.close();
             con.close();
