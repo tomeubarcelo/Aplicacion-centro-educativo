@@ -51,7 +51,7 @@ public class AppCentroEducativo {
                 opcio = menuOpcions();
                 switch (opcio) {
                     case 1: 
-                    System.out.println("\n1a ejecucion");
+                    System.out.println("1a ejecucion");
                     //execucio
                     rs = stmt.executeQuery("SELECT codiAlumne, nomAlumne, codiTutorAlumne FROM alumno ORDER BY nomAlumne");
                     while (rs.next()) {                
@@ -60,7 +60,7 @@ public class AppCentroEducativo {
                     }
                         break;
                     case 2:
-                        System.out.println("\n2a ejecucion");
+                        System.out.println("2a ejecucion");
                         //2A execucio
                         rs = stmt.executeQuery("SELECT codiTutor, nomTutor FROM tutor");
                         while (rs.next()) {                
@@ -101,6 +101,10 @@ public class AppCentroEducativo {
             Logger.getLogger(AppCentroEducativo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    /*private static mostrarAlumnos(){
+        
+    }*/
     
     //MENÚ DE OPCIONS
     private static byte menuOpcions ()  {
