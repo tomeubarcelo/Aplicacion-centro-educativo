@@ -27,6 +27,8 @@ public class AppCentroEducativo {
         Statement stmt;
         ResultSet rs;
         Alumno alumno;
+        Tutor tutor;
+        
         //variables para conexion bbdd
         String connexioUrl,user,password;
         try {
@@ -38,11 +40,21 @@ public class AppCentroEducativo {
             
             //crear sentencia
             stmt = con.createStatement();
+            
+            System.out.println("\n1a ejecucion");
             //execucio
-            rs = stmt.executeQuery("SELECT codiAlumne, nomAlumne, codiTutorAlumne FROM alumno");
+            rs = stmt.executeQuery("SELECT codiAlumne, nomAlumne, codiTutorAlumne FROM alumno ORDER BY nomAlumne");
             while (rs.next()) {                
                 alumno = new Alumno(rs.getString("codiAlumne"),rs.getString("nomAlumne") ,rs.getString("codiTutorAlumne"));
                 System.out.println(alumno.getCodi() + " "+ alumno.getNombre() + " "+alumno.getCodiTutorAlu());
+            }
+             
+            System.out.println("\n2a ejecucion");
+            //2A execucio
+            rs = stmt.executeQuery("SELECT codiTutor, nomTutor FROM tutor");
+            while (rs.next()) {                
+                tutor = new Tutor(rs.getString("codiTutor"),rs.getString("nomTutor"));
+                System.out.println(tutor.getCodi() + " "+ tutor.getNombre());
             }
             //tancam les connexions
             rs.close();
