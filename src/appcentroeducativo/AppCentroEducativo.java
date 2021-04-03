@@ -24,14 +24,17 @@ public class AppCentroEducativo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //variables necesarias para la conexion a la bbdd
         Connection con;
         Statement stmt;
-        ResultSet rs;
-        Alumno alumno;
-        Tutor tutor;
+        ResultSet rs = null;
+        
+        Alumno alumno; //declaramos objeto alumno
+        Tutor tutor; //declaramos objeto tutor
         
         //variables para conexion bbdd
         String connexioUrl,user,password;
+        
         try {
             connexioUrl = "jdbc:mysql://localhost:3306/bd_tomeu_barcelo_pons";
             user = "root";
@@ -42,27 +45,59 @@ public class AppCentroEducativo {
             //crear sentencia
             stmt = con.createStatement();
             
-            System.out.println("\n1a ejecucion");
-            //execucio
-            rs = stmt.executeQuery("SELECT codiAlumne, nomAlumne, codiTutorAlumne FROM alumno ORDER BY nomAlumne");
-            while (rs.next()) {                
-                alumno = new Alumno(rs.getString("codiAlumne"),rs.getString("nomAlumne") ,rs.getString("codiTutorAlumne"));
-                System.out.println(alumno.getCodi() + " "+ alumno.getNombre() + " "+alumno.getCodiTutorAlu());
-            }
-             
-            System.out.println("\n2a ejecucion");
-            //2A execucio
-            rs = stmt.executeQuery("SELECT codiTutor, nomTutor FROM tutor");
-            while (rs.next()) {                
-                tutor = new Tutor(rs.getString("codiTutor"),rs.getString("nomTutor"));
-                System.out.println(tutor.getCodi() + " "+ tutor.getNombre());
-            }
+            byte opcio = 0;
+            //bucle para el menu
+            do {
+                opcio = menuOpcions();
+                switch (opcio) {
+                    case 1: 
+                    System.out.println("\n1a ejecucion");
+                    //execucio
+                    rs = stmt.executeQuery("SELECT codiAlumne, nomAlumne, codiTutorAlumne FROM alumno ORDER BY nomAlumne");
+                    while (rs.next()) {                
+                        alumno = new Alumno(rs.getString("codiAlumne"),rs.getString("nomAlumne") ,rs.getString("codiTutorAlumne"));
+                        System.out.println(alumno.getCodi() + " "+ alumno.getNombre() + " "+alumno.getCodiTutorAlu());
+                    }
+                        break;
+                    case 2:
+                        System.out.println("\n2a ejecucion");
+                        //2A execucio
+                        rs = stmt.executeQuery("SELECT codiTutor, nomTutor FROM tutor");
+                        while (rs.next()) {                
+                            tutor = new Tutor(rs.getString("codiTutor"),rs.getString("nomTutor"));
+                            System.out.println(tutor.getCodi() + " "+ tutor.getNombre());
+                        }
+                        break;
+                    case 3:
+                        System.out.println("\n3a ejecucion");
+                        break;
+                    case 4:
+                        System.out.println("\n4a ejecucion");
+                        break;
+                    case 5:
+                        System.out.println("\n5a ejecucion");
+                        break;
+                    case 6:
+                        System.out.println("\n6a ejecucion");
+                        break;
+                    case 7:
+                        System.out.println("\n7a ejecucion");
+                        break;
+                    case 8:
+                        System.out.println("PROGRAMA FINALITZAT!!!");
+                        break;
+                    default:
+                        System.out.println("Aquesta opció no existeix.");
+                } 
+            } while (opcio==1 || opcio == 2 || opcio==3 || opcio == 4 || opcio == 5 || opcio == 6 || opcio == 7);
+
             //tancam les connexions
             rs.close();
             stmt.close();
             con.close();
             
         } catch (SQLException ex) {
+            //excepcio en el cas que no s'hagi fet la connexio a la bbdd
             Logger.getLogger(AppCentroEducativo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
