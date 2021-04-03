@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 /**
  *
@@ -66,4 +67,32 @@ public class AppCentroEducativo {
         }
     }
     
+    //MENÚ DE OPCIONS
+    private static byte menuOpcions ()  {
+        byte opcio=0;
+        do{
+            try{
+                Scanner op = new Scanner (System.in);
+                //menú d'opcions del programa
+                System.out.println("1. Mostrar a todos los alumnos de la base de datos.");
+                System.out.println("2. Mostrar a todos los tutores de la base de datos.");
+                System.out.println("3. Mostrar el listado de alumnos de un determinado tutor, indicando el número total de alumnos de dicho tutor al final del listado.");
+                System.out.println("4. Insertar un nuevo tutor con código 999 y nombre “Catalina Salas Simón”. Si el código ya existe, mostrar el mensaje correspondiente por pantalla."); 
+                System.out.println("5. Insertar un nuevo alumno con código CCC99, nombre “Carme Costa Coll” y código de tutor 999.");
+                System.out.println("6. Pedir por teclado el código de un alumno y eliminarlo de la base de datos.");
+                System.out.println("7. Modificar el nombre de un tutor, dado su código por teclado.");
+                System.out.println("8. Salir de la aplicación.");
+                System.out.println("Introdueix l'opcio elegida: ");
+                opcio=op.nextByte();
+                if (opcio < 1 || opcio > 8) {
+                System.out.println("Escollir entre (1..8)!.");    
+                }
+            }    
+            catch(Exception e){
+                System.out.println(e.getMessage()+ " . Error al llegir del teclat(1..8)!.");
+            }
+            
+        }while (opcio < 1 || opcio > 8);
+        return opcio;
+    } 
 }
