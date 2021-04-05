@@ -52,16 +52,14 @@ public class AppCentroEducativo {
                 opcio = menuOpcions();
                 switch (opcio) {
                     case 1: 
-                    System.out.println("1a ejecucion");
-                    //execucio
-                    rs = stmt.executeQuery("SELECT codiAlumne, nomAlumne, codiTutorAlumne FROM alumno ORDER BY nomAlumne");
-                    while (rs.next()) {                
-                        alumno = new Alumno(rs.getString("codiAlumne"),rs.getString("nomAlumne") ,rs.getString("codiTutorAlumne"));
-                        System.out.println(alumno.getCodi() + " "+ alumno.getNombre() + " "+alumno.getCodiTutorAlu());
-                    }
+                        //1a execucio
+                        rs = stmt.executeQuery("SELECT codiAlumne, nomAlumne, codiTutorAlumne FROM alumno ORDER BY nomAlumne");
+                        while (rs.next()) {                
+                            alumno = new Alumno(rs.getString("codiAlumne"),rs.getString("nomAlumne") ,rs.getString("codiTutorAlumne"));
+                            System.out.println(alumno.getCodi() + " "+ alumno.getNombre() + " "+alumno.getCodiTutorAlu());
+                        }
                         break;
                     case 2:
-                        System.out.println("2a ejecucion");
                         //2A execucio
                         rs = stmt.executeQuery("SELECT codiTutor, nomTutor FROM tutor");
                         while (rs.next()) {                
@@ -70,17 +68,19 @@ public class AppCentroEducativo {
                         }
                         break;
                     case 3:
-                        //System.out.println("3a ejecucion");
-                        //ENUMERAR TODOS LOS CODIGOS DE LOS TUTORES
+                        //3A execucio
+
                         System.out.println("Código de los tutores:");
                         //creamos arrayList donde almacenamos el cod de cada profesor
-                        ArrayList <String> arrayCodTutor = new ArrayList<String>();
+                        ArrayList <String> arrayCodTutor = new ArrayList<>();
+                        
+                        //ENUMERAR TODOS LOS CODIGOS DE LOS TUTORES
                         try {
                             rs = stmt.executeQuery("SELECT distinct codiTutorAlumne FROM alumno");
                             while (rs.next()) {                
                                 alumno = new Alumno("","",rs.getString("codiTutorAlumne"));
                                 System.out.print(alumno.getCodiTutorAlu()+", ");
-                                arrayCodTutor.add(alumno.getCodiTutorAlu());
+                                arrayCodTutor.add(alumno.getCodiTutorAlu()); //guardamos el cod en array
                             }    
                         } catch (SQLException e) {
                             System.err.println(e);
@@ -94,13 +94,15 @@ public class AppCentroEducativo {
                                 System.out.println("Inserte codigo tutor para ver sus alumnos: ");
                                 Scanner sc = new Scanner (System.in);
                                 codiInserted = sc.next();
-                                dadaOk = arrayCodTutor.contains(codiInserted); //dada ok sera true o false si existe o no el codigo
+                                dadaOk = arrayCodTutor.contains(codiInserted); 
+                                //dada ok sera true o false si existe o no el codigo
                             }catch (Exception e){ //tractam l'excepció generada per setCodi
-                                System.out.println(e.getMessage()+ ". Torna a introduir el codi de l'alumne: ");
+                                System.out.println(e.getMessage()+ ". Torna a introduir el codi del tutor: ");
                                 dadaOk = false;
                             }
                         } while (!dadaOk);
                         
+                        //consulta de todos los alumnos con el codigo del tutor introducido
                         try {
                             rs = stmt.executeQuery("SELECT * FROM alumno WHERE codiTutorAlumne ="+codiInserted);
                             while (rs.next()) {                
