@@ -117,6 +117,18 @@ public class AppCentroEducativo {
 
                     case 4:
                         System.out.println("\n4a ejecucion");
+                        try {
+                            stmt.executeUpdate("INSERT INTO TUTOR (codiTutor, nomTutor) VALUES (999, 'Catalina Salas Simón')");
+                                       
+                            //tutor = new Tutor(rs.getString("codiTutor"),rs.getString("nomTutor"));
+                            //System.out.println(tutor.getCodi() + " "+ tutor.getNombre());
+                            System.out.println("Insertado");
+                                
+                         } catch (SQLException e) {
+                             System.err.println(e);
+                             System.err.println("Ya existe el código");
+                         }
+
                         break;
                     case 5:
                         System.out.println("\n5a ejecucion");
