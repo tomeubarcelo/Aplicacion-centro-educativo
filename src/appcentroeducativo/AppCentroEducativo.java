@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -72,18 +73,34 @@ public class AppCentroEducativo {
                         //System.out.println("3a ejecucion");
                         //ENUMERAR TODOS LOS CODIGOS DE LOS TUTORES
                         System.out.println("Código de los tutores:");
+                        //creamos arrayList donde almacenamos el cod de cada profesor
+                        ArrayList <String> arrayCodTutor = new ArrayList<String>();
                         try {
                             rs = stmt.executeQuery("SELECT distinct codiTutorAlumne FROM alumno");
                             while (rs.next()) {                
                                 alumno = new Alumno("","",rs.getString("codiTutorAlumne"));
                                 System.out.print(alumno.getCodiTutorAlu()+", ");
+                                arrayCodTutor.add(alumno.getCodiTutorAlu());
                             }    
                         } catch (SQLException e) {
                             System.err.println(e);
                         }
-                        System.out.println("Inserte codigo tutor para ver sus alumnos: ");
-                        Scanner sc = new Scanner (System.in);
-                        String codiInserted = sc.next();
+                        //variable per controlar que el codi alu sigui correcte
+                        boolean dadaOk;
+                        String codiInserted = "";
+                        //Demanar el codi fins que sigui correcte
+                        do { 
+                            try {
+                                System.out.println("Inserte codigo tutor para ver sus alumnos: ");
+                                Scanner sc = new Scanner (System.in);
+                                codiInserted = sc.next();
+                                dadaOk = arrayCodTutor.contains(codiInserted); //dada ok sera true o false si existe o no el codigo
+                            }catch (Exception e){ //tractam l'excepció generada per setCodi
+                                System.out.println(e.getMessage()+ ". Torna a introduir el codi de l'alumne: ");
+                                dadaOk = false;
+                            }
+                        } while (!dadaOk);
+                        
                         try {
                             rs = stmt.executeQuery("SELECT * FROM alumno WHERE codiTutorAlumne ="+codiInserted);
                             while (rs.next()) {                
