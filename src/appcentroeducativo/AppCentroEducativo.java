@@ -97,7 +97,7 @@ public class AppCentroEducativo {
                                 codiInserted = sc.next();
                                 dadaOk = arrayCodTutor.contains(codiInserted); 
                                 //dada ok sera true o false si existe o no el codigo
-                            }catch (Exception e){ //tractam l'excepció generada per setCodi
+                            }catch (Exception e){ //tractam l'excepció
                                 System.out.println(e.getMessage()+ ". Torna a introduir el codi del tutor: ");
                                 dadaOk = false;
                             }
@@ -117,7 +117,7 @@ public class AppCentroEducativo {
                         break;
 
                     case 4:
-                        System.out.println("\n4a ejecucion");
+                        //System.out.println("\n4a ejecucion");
                         try {
                             stmt.executeUpdate("INSERT INTO TUTOR (codiTutor, nomTutor) VALUES (999, 'Catalina Salas Simón')");
                                        
@@ -132,7 +132,7 @@ public class AppCentroEducativo {
 
                         break;
                     case 5:
-                        System.out.println("\n5a ejecucion");
+                        //System.out.println("\n5a ejecucion");
                         
                         try {
                             stmt.executeUpdate("INSERT INTO ALUMNO VALUES ('CCC99', 'Carme Costa Coll', 999)");
@@ -148,7 +148,7 @@ public class AppCentroEducativo {
                         
                         break;
                     case 6:
-                        System.out.println("\n6a ejecucion");
+                        //System.out.println("\n6a ejecucion");
                         
                         System.out.println("Código de los alumnos:");
                         //creamos arrayList donde almacenamos el cod de cada ALU
@@ -196,8 +196,7 @@ public class AppCentroEducativo {
                         
                         break;
                     case 7:
-                        System.out.println("\n7a ejecucion");
-                        
+                        //System.out.println("\n7a ejecucion");
                         
                         System.out.println("Código de los tutores:");
                         //creamos arrayList donde almacenamos el cod de cada profesor
@@ -226,7 +225,7 @@ public class AppCentroEducativo {
                                 codiInserted3 = sc.next();
                                 dadaOk3 = arrayCodTutor2.contains(codiInserted3); 
                                 //dada ok sera true o false si existe o no el codigo
-                            }catch (Exception e){ //tractam l'excepció generada per setCodi
+                            }catch (Exception e){ //tractam l'excepció
                                 System.out.println(e.getMessage()+ ". Torna a introduir el codi del tutor: ");
                                 dadaOk3 = false;
                             }
