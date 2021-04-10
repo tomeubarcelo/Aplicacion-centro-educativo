@@ -183,9 +183,7 @@ public class AppCentroEducativo {
                             }
                         } while (!dadaOk2);
                         
-                        //eliminar codi alu seleccionado
-                        
-                            
+                        //eliminar codi alu seleccionado              
                         try {                                       
                             System.out.println("Vas a borrar al alumno con código "+codiInserted2);  
                             stmt.executeUpdate("DELETE FROM ALUMNO WHERE codiAlumne ='"+codiInserted2+"'");
@@ -199,6 +197,56 @@ public class AppCentroEducativo {
                         break;
                     case 7:
                         System.out.println("\n7a ejecucion");
+                        
+                        
+                        System.out.println("Código de los tutores:");
+                        //creamos arrayList donde almacenamos el cod de cada profesor
+                        ArrayList <String> arrayCodTutor2 = new ArrayList<>();
+                        
+                        //ENUMERAR TODOS LOS CODIGOS DE LOS TUTORES
+                        try {
+                            rs = stmt.executeQuery("SELECT distinct codiTutor FROM tutor");
+                            //consulta donde aparecen los codigos de los tutores de los alumnos sin repeticion
+                            while (rs.next()) {                
+                                tutor = new Tutor("",rs.getString("codiTutor"));
+                                System.out.print(tutor.getCodi()+", ");
+                                arrayCodTutor2.add(tutor.getCodi()); //guardamos el cod en array
+                            }    
+                        } catch (SQLException e) {
+                            System.err.println(e);
+                        }
+                        //variable per controlar que el codi tutor sigui correcte
+                        boolean dadaOk3;
+                        String codiInserted3 = "";
+                        //Demanar el codi fins que sigui correcte
+                        do { 
+                            try {
+                                System.out.println("Inserte codigo tutor del cual quiere modificar el nombre: ");
+                                Scanner sc = new Scanner (System.in);
+                                codiInserted3 = sc.next();
+                                dadaOk3 = arrayCodTutor2.contains(codiInserted3); 
+                                //dada ok sera true o false si existe o no el codigo
+                            }catch (Exception e){ //tractam l'excepció generada per setCodi
+                                System.out.println(e.getMessage()+ ". Torna a introduir el codi del tutor: ");
+                                dadaOk3 = false;
+                            }
+                        } while (!dadaOk3);
+
+                        //modificar nombre tutor
+                        try {                                       
+                            System.out.println("Vas a modificar el nombre del tutor con código: "+codiInserted3);  
+                            Scanner sc = new Scanner (System.in);
+                            System.out.println("Inserta el nuevo nombre:");  
+                            String nuevoNombreTutor = sc.next();
+                            stmt.executeUpdate("UPDATE TUTOR SET nomTutor='"+nuevoNombreTutor+"' WHERE codiTutor='"+codiInserted3+"'");
+                            //borramos el alumno con el codigo de alumno que hemos elegido anteriormente
+                            System.out.println("Has modificado el nombre del nuevo tutor " + nuevoNombreTutor + " correctamente.") ;
+                                
+                         } catch (SQLException e) {
+                             System.err.println(e);
+                         }
+                        
+                        
                         break;
                     case 8:
                         System.out.println("PROGRAMA FINALITZAT!!!");
