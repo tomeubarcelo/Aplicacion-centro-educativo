@@ -149,6 +149,43 @@ public class AppCentroEducativo {
                         break;
                     case 6:
                         System.out.println("\n6a ejecucion");
+                        
+                        System.out.println("Código de los alumnos:");
+                        //creamos arrayList donde almacenamos el cod de cada ALU
+                        ArrayList <String> arrayCodAlu = new ArrayList<>();
+                        
+                        //ENUMERAR TODOS LOS CODIGOS DE LOS ALUMNOS PARA ELEGIR CUAL BORRAR
+                        try {
+                            rs = stmt.executeQuery("SELECT distinct codiAlumne FROM alumno");
+                            //consulta donde aparecen los codigos de los alumnos sin repeticion
+                            while (rs.next()) {                
+                                alumno = new Alumno(rs.getString("codiAlumne"),"","");
+                                System.out.println(alumno.getCodi());
+                                arrayCodAlu.add(alumno.getCodi()); //guardamos el cod en array
+                            }    
+                        } catch (SQLException e) {
+                            System.err.println(e);
+                        }
+                        //variable per controlar que el codi alu sigui correcte
+                        boolean dadaOk2;
+                        String codiInserted2 = "";
+                        //Demanar el codi fins que sigui correcte
+                        do { 
+                            try {
+                                System.out.println("Inserte codigo alumno que quiere borrar: ");
+                                Scanner sc = new Scanner (System.in);
+                                codiInserted2 = sc.next();
+                                dadaOk2 = arrayCodAlu.contains(codiInserted2); 
+                                //dada ok sera true o false si existe o no el codigo
+                            }catch (Exception e){ //tractam l'excepció
+                                System.out.println(e.getMessage()+ ". Torna a introduir el codi del alumne: ");
+                                dadaOk2 = false;
+                            }
+                        } while (!dadaOk2);
+                        
+                        //eliminar codi alu seleccionado
+                        System.out.println("Vas a borrar al alu con codi "+codiInserted2);
+                        
                         break;
                     case 7:
                         System.out.println("\n7a ejecucion");
