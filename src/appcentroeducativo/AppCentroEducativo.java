@@ -77,6 +77,7 @@ public class AppCentroEducativo {
                         //ENUMERAR TODOS LOS CODIGOS DE LOS TUTORES
                         try {
                             rs = stmt.executeQuery("SELECT distinct codiTutorAlumne FROM alumno");
+                            //consulta donde aparecen los codigos de los tutores de los alumnos sin repeticion
                             while (rs.next()) {                
                                 alumno = new Alumno("","",rs.getString("codiTutorAlumne"));
                                 System.out.print(alumno.getCodiTutorAlu()+", ");
@@ -132,6 +133,19 @@ public class AppCentroEducativo {
                         break;
                     case 5:
                         System.out.println("\n5a ejecucion");
+                        
+                        try {
+                            stmt.executeUpdate("INSERT INTO ALUMNO VALUES ('CCC99', 'Carme Costa Coll', 999)");
+                                       
+                            //tutor = new Tutor(rs.getString("codiTutor"),rs.getString("nomTutor"));
+                            //System.out.println(tutor.getCodi() + " "+ tutor.getNombre());
+                            System.out.println("Insertado");
+                                
+                         } catch (SQLException e) {
+                             System.err.println(e);
+                             System.err.println("Ya existe el código");
+                         }
+                        
                         break;
                     case 6:
                         System.out.println("\n6a ejecucion");
