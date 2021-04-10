@@ -184,7 +184,17 @@ public class AppCentroEducativo {
                         } while (!dadaOk2);
                         
                         //eliminar codi alu seleccionado
-                        System.out.println("Vas a borrar al alu con codi "+codiInserted2);
+                        
+                            
+                        try {                                       
+                            System.out.println("Vas a borrar al alumno con código "+codiInserted2);  
+                            stmt.executeUpdate("DELETE FROM ALUMNO WHERE codiAlumne ='"+codiInserted2+"'");
+                            //borramos el alumno con el codigo de alumno que hemos elegido anteriormente
+                            System.out.println("Se borró al alumno con código " + codiInserted2 + " correctamente.") ;
+                                
+                         } catch (SQLException e) {
+                             System.err.println(e);
+                         }
                         
                         break;
                     case 7:
