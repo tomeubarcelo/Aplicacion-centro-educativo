@@ -237,8 +237,10 @@ public class AppCentroEducativo {
                             System.out.println("Vas a modificar el nombre del tutor con código: "+codiInserted3);  
                             Scanner sc = new Scanner (System.in);
                             System.out.println("Inserta el nuevo nombre:");  
-                            String nuevoNombreTutor = sc.next();
+                            String nuevoNombreTutor = "";
+                            nuevoNombreTutor = sc.nextLine();
                             stmt.executeUpdate("UPDATE TUTOR SET nomTutor='"+nuevoNombreTutor+"' WHERE codiTutor='"+codiInserted3+"'");
+                            //System.out.println(nuevoNombreTutor);  
                             //borramos el alumno con el codigo de alumno que hemos elegido anteriormente
                             System.out.println("Has modificado el nombre del nuevo tutor " + nuevoNombreTutor + " correctamente.") ;
                                 
