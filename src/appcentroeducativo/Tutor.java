@@ -19,9 +19,8 @@ public class Tutor {
     }
     
     //SETTER NOMBRE TUTOR
-    public void setNombre(String nombre, String codi) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
-        this.codi = codi;
     }
       
     //GETTER NOMBRE TUTOR
