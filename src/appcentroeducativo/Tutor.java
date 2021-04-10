@@ -19,8 +19,12 @@ public class Tutor {
     }
     
     //SETTER NOMBRE TUTOR
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre) throws Exception {
+        if (nombre.length() < 10 || nombre.length() > 40) {
+            throw new Exception("Formato incorrecto. Mínimo 10 letras y máximo 40.");
+        } else{
+            this.nombre = nombre;
+        }
     }
       
     //GETTER NOMBRE TUTOR

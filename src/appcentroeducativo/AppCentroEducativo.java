@@ -24,7 +24,7 @@ public class AppCentroEducativo {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //variables necesarias para la conexion a la bbdd
         Connection con;
         Statement stmt;
@@ -238,6 +238,10 @@ public class AppCentroEducativo {
                             System.out.println("Inserta el nuevo nombre:");  
                             String nuevoNombreTutor = "";
                             nuevoNombreTutor = sc.nextLine();
+                            
+                            tutor = new Tutor(codiInserted3,nuevoNombreTutor);
+                            tutor.setNombre(nuevoNombreTutor);
+                            System.out.println(tutor.getNombre());
                             stmt.executeUpdate("UPDATE TUTOR SET nomTutor='"+nuevoNombreTutor+"' WHERE codiTutor='"+codiInserted3+"'");
                             //System.out.println(nuevoNombreTutor);  
                             //borramos el alumno con el codigo de alumno que hemos elegido anteriormente
