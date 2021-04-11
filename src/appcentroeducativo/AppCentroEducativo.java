@@ -127,7 +127,7 @@ public class AppCentroEducativo {
                                 
                          } catch (SQLException e) {
                              System.err.println(e);
-                             System.err.println("Ya existe el código");
+                             //System.err.println("Ya existe el código");
                          }
 
                         break;
@@ -139,6 +139,8 @@ public class AppCentroEducativo {
                         try {
                             stmt.executeUpdate("INSERT INTO ALUMNO VALUES ('CCC99', 'Carme Costa Coll', 999)");
                             alumno = new Alumno(codiAluNuevo,nombreAluNuevo, codTutorNuevoAlumno);
+                            //declaramos al alumno con los datos a insertar
+                            //metodos setters que validan dichos datos
                             alumno.setCodi(codiAluNuevo);         
                             alumno.setNombre(nombreAluNuevo); 
                             alumno.setCodiTutorAlu(codTutorNuevoAlumno); 
@@ -147,7 +149,6 @@ public class AppCentroEducativo {
                                 
                          } catch (SQLException e) {
                              System.err.println(e);
-                             System.err.println("Ya existe el código");
                          }
                         
                         break;
