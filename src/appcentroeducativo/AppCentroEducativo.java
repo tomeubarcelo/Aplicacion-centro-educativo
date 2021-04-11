@@ -137,7 +137,7 @@ public class AppCentroEducativo {
                         String nombreAluNuevo = "Carme Costa Coll";
                         String codTutorNuevoAlumno = "999";
                         try {
-                            stmt.executeUpdate("INSERT INTO ALUMNO VALUES ('CCC99', 'Carme Costa Coll', 999)");
+                            stmt.executeUpdate("INSERT INTO ALUMNO VALUES ('"+codiAluNuevo+"', '"+nombreAluNuevo+"', '"+codTutorNuevoAlumno+"')");
                             alumno = new Alumno(codiAluNuevo,nombreAluNuevo, codTutorNuevoAlumno);
                             //declaramos al alumno con los datos a insertar
                             //metodos setters que validan dichos datos
