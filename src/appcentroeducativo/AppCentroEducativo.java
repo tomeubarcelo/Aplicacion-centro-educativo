@@ -119,10 +119,14 @@ public class AppCentroEducativo {
                     case 4:
                         //System.out.println("\n4a ejecucion");
                         try {
-                            stmt.executeUpdate("INSERT INTO TUTOR (codiTutor, nomTutor) VALUES (999, 'Catalina Salas Simón')");
+                            String codiTutorNuevo = "999";
+                            String nombreTutorNuevo = "Catalina Salas Simón";
+                            stmt.executeUpdate("INSERT INTO TUTOR (codiTutor, nomTutor) VALUES ('"+codiTutorNuevo+"', '"+nombreTutorNuevo+"')");
                                        
-                            //tutor = new Tutor(rs.getString("codiTutor"),rs.getString("nomTutor"));
-                            //System.out.println(tutor.getCodi() + " "+ tutor.getNombre());
+                            tutor = new Tutor(codiTutorNuevo,nombreTutorNuevo);
+                            tutor.setCodi(codiTutorNuevo);
+                            tutor.setNombre(nombreTutorNuevo);
+                            System.out.println(tutor.getCodi() + " "+ tutor.getNombre());
                             System.out.println("Insertado");
                                 
                          } catch (SQLException e) {
