@@ -114,6 +114,17 @@ public class AppCentroEducativo {
                             System.err.println(e);
                         }
                         
+                        //indica el número total de alumnos de dicho tutor 
+                        try {
+                            rs = stmt.executeQuery("SELECT COUNT(codiAlumne) AS NumberOfAlumns FROM alumno WHERE codiTutorAlumne ="+codiInserted);  
+                           
+                            rs.next();
+                            int count = rs.getInt(1);
+                            System.out.println("Número de alumnos: "+count);   
+                            
+                        } catch (SQLException e) {
+                            System.err.println(e);
+                        }
                         break;
 
                     case 4:
@@ -283,6 +294,17 @@ public class AppCentroEducativo {
         
     }*/
     
+    /*public int num() throws Exception {
+        try {
+        resultSet = statement.executeQuery("select count(*) from testdb.emg");
+
+        while (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+       } catch (Exception e) {
+       }
+        return 0;
+    }*/
     //MENÚ DE OPCIONS
     private static byte menuOpcions ()  {
         byte opcio=0;
