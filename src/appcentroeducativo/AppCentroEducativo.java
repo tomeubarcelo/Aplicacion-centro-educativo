@@ -133,12 +133,16 @@ public class AppCentroEducativo {
                         break;
                     case 5:
                         //System.out.println("\n5a ejecucion");
-                        
+                        String codiAluNuevo = "CCC99";
+                        String nombreAluNuevo = "Carme Costa Coll";
+                        String codTutorNuevoAlumno = "999";
                         try {
                             stmt.executeUpdate("INSERT INTO ALUMNO VALUES ('CCC99', 'Carme Costa Coll', 999)");
-                                       
-                            //tutor = new Tutor(rs.getString("codiTutor"),rs.getString("nomTutor"));
-                            //System.out.println(tutor.getCodi() + " "+ tutor.getNombre());
+                            alumno = new Alumno(codiAluNuevo,nombreAluNuevo, codTutorNuevoAlumno);
+                            alumno.setCodi(codiAluNuevo);         
+                            alumno.setNombre(nombreAluNuevo); 
+                            alumno.setCodiTutorAlu(codTutorNuevoAlumno); 
+                            System.out.println(alumno.getCodi()+ " "+ alumno.getNombre()+" "+ alumno.getCodiTutorAlu());
                             System.out.println("Insertado");
                                 
                          } catch (SQLException e) {
@@ -244,14 +248,12 @@ public class AppCentroEducativo {
                             System.out.println(tutor.getNombre());
                             stmt.executeUpdate("UPDATE TUTOR SET nomTutor='"+nuevoNombreTutor+"' WHERE codiTutor='"+codiInserted3+"'");
                             //System.out.println(nuevoNombreTutor);  
-                            //borramos el alumno con el codigo de alumno que hemos elegido anteriormente
+                            //modificamos el nombre del tutor
                             System.out.println("Has modificado el nombre del nuevo tutor " + nuevoNombreTutor + " correctamente.") ;
                                 
                          } catch (SQLException e) {
                              System.err.println(e);
-                         }
-                        
-                        
+                         }  
                         break;
                     case 8:
                         System.out.println("PROGRAMA FINALITZAT!!!");
