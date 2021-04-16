@@ -84,7 +84,7 @@ public class AppCentroEducativo {
                                 arrayCodTutor.add(alumno.getCodiTutorAlu()); //guardamos el cod en array
                             }    
                         } catch (SQLException e) {
-                            System.err.println(e);
+                            System.out.println(e);
                         }
                         //variable per controlar que el codi alu sigui correcte
                         boolean dadaOk;
@@ -111,7 +111,7 @@ public class AppCentroEducativo {
                                 System.out.println(alumno.getCodi() + " "+ alumno.getNombre() + " "+alumno.getCodiTutorAlu());
                             }    
                         } catch (SQLException e) {
-                            System.err.println(e);
+                            System.out.println(e);
                         }
                         
                         //indica el número total de alumnos de dicho tutor 
@@ -123,7 +123,7 @@ public class AppCentroEducativo {
                             System.out.println("Número de alumnos: "+count);   
                             
                         } catch (SQLException e) {
-                            System.err.println(e);
+                            System.out.println(e);
                         }
                         break;
 
@@ -141,7 +141,7 @@ public class AppCentroEducativo {
                             System.out.println("Insertado");
                                 
                          } catch (SQLException e) {
-                             System.err.println(e);
+                             System.out.println(e);
                              //System.err.println("Ya existe el código");
                          }
 
@@ -163,7 +163,7 @@ public class AppCentroEducativo {
                             System.out.println("Insertado");
                                 
                          } catch (SQLException e) {
-                             System.err.println(e);
+                             System.out.println(e);
                          }
                         
                         break;
@@ -184,7 +184,7 @@ public class AppCentroEducativo {
                                 arrayCodAlu.add(alumno.getCodi()); //guardamos el cod en array
                             }    
                         } catch (SQLException e) {
-                            System.err.println(e);
+                            System.out.println(e);
                         }
                         //variable per controlar que el codi alu sigui correcte
                         boolean dadaOk2;
@@ -211,7 +211,7 @@ public class AppCentroEducativo {
                             System.out.println("Se borró al alumno con código " + codiInserted2 + " correctamente.") ;
                                 
                          } catch (SQLException e) {
-                             System.err.println(e);
+                             System.out.println(e);
                          }
                         
                         break;
@@ -232,7 +232,7 @@ public class AppCentroEducativo {
                                 arrayCodTutor2.add(tutor.getCodi()); //guardamos el cod en array
                             }    
                         } catch (SQLException e) {
-                            System.err.println(e);
+                            System.out.println(e);
                         }
                         //variable per controlar que el codi tutor sigui correcte
                         boolean dadaOk3;
@@ -268,7 +268,7 @@ public class AppCentroEducativo {
                             System.out.println("Has modificado el nombre del nuevo tutor " + nuevoNombreTutor + " correctamente.") ;
                                 
                          } catch (SQLException e) {
-                             System.err.println(e);
+                             System.out.println(e);
                          }  
                         break;
                     case 8:
