@@ -24,6 +24,7 @@ public class AppCentroEducativo {
 
     /**
      * @param args the command line arguments
+     * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
         //variables necesarias para la conexion a la bbdd
@@ -292,21 +293,6 @@ public class AppCentroEducativo {
         }
     }
     
-    /*private static mostrarAlumnos(){
-        
-    }*/
-    
-    /*public int num() throws Exception {
-        try {
-        resultSet = statement.executeQuery("select count(*) from testdb.emg");
-
-        while (resultSet.next()) {
-            return resultSet.getInt(1);
-        }
-       } catch (Exception e) {
-       }
-        return 0;
-    }*/
     //MENÚ DE OPCIONS
     private static byte menuOpcions ()  {
         byte opcio=0;
