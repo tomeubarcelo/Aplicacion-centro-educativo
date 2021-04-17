@@ -143,7 +143,7 @@ public class AppCentroEducativo {
                                 
                          } catch (SQLException e) {
                              System.out.println(e);
-                             //System.err.println("Ya existe el código");
+                             System.out.println("Ya existen estos datos.");
                          }
 
                         break;
@@ -165,6 +165,7 @@ public class AppCentroEducativo {
                                 
                          } catch (SQLException e) {
                              System.out.println(e);
+                             System.out.println("Ya existen estos datos.");
                          }
                         
                         break;
@@ -262,8 +263,8 @@ public class AppCentroEducativo {
                             
                             tutor = new Tutor(codiInserted3,nuevoNombreTutor);
                             tutor.setNombre(nuevoNombreTutor);
-                            System.out.println(tutor.getNombre());
-                            stmt.executeUpdate("UPDATE TUTOR SET nomTutor='"+nuevoNombreTutor+"' WHERE codiTutor='"+codiInserted3+"'");
+                            //System.out.println(tutor.getNombre());
+                            stmt.executeUpdate("UPDATE TUTOR SET nomTutor='"+tutor.getNombre()+"' WHERE codiTutor='"+codiInserted3+"'");
                             //System.out.println(nuevoNombreTutor);  
                             //modificamos el nombre del tutor
                             System.out.println("Has modificado el nombre del nuevo tutor " + nuevoNombreTutor + " correctamente.") ;
