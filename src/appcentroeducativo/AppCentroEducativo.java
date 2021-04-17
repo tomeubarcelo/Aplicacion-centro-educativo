@@ -18,6 +18,7 @@ import java.util.Scanner;
 /**
  *
  * @author tomeu
+ * Tarea PROG11
  */
 public class AppCentroEducativo {
 

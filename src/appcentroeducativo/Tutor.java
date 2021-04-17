@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 /**
  *
  * @author tomeu
+ * Tarea PROG11
  */
 public class Tutor {
     private String nombre;
